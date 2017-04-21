@@ -6,9 +6,9 @@ using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Network.Fluent.Models;
-using Microsoft.Azure.Management.Resource.Fluent;
-using Microsoft.Azure.Management.Resource.Fluent.Core;
-using Microsoft.Azure.Management.Resource.Fluent.Core.ResourceActions;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
 using System.Collections.Generic;
@@ -110,7 +110,7 @@ namespace ManageInternetFacingLoadBalancer
                 // Create a public IP address
                 Utilities.Log("Creating a public IP address...");
 
-                var publicIpAddress = azure.PublicIpAddresses.Define(publicIpName1)
+                var publicIpAddress = azure.PublicIPAddresses.Define(publicIpName1)
                         .WithRegion(Region.USEast)
                         .WithExistingResourceGroup(rgName)
                         .WithLeafDomainLabel(publicIpName1)
@@ -118,7 +118,7 @@ namespace ManageInternetFacingLoadBalancer
 
                 Utilities.Log("Created a public IP address");
                 // Print the virtual network details
-                Utilities.PrintIpAddress(publicIpAddress);
+                Utilities.PrintIPAddress(publicIpAddress);
 
                 //=============================================================
                 // Create an Internet facing load balancer
@@ -149,7 +149,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithRegion(Region.USEast)
                         .WithExistingResourceGroup(rgName)
                         .DefinePublicFrontend(frontendName)
-                            .WithExistingPublicIpAddress(publicIpAddress)
+                            .WithExistingPublicIPAddress(publicIpAddress)
                             .Attach()
 
                         // Add two backend one per rule
@@ -234,7 +234,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithNewResourceGroup(rgName)
                         .WithExistingPrimaryNetwork(network)
                         .WithSubnet("Front-end")
-                        .WithPrimaryPrivateIpAddressDynamic()
+                        .WithPrimaryPrivateIPAddressDynamic()
                         .WithExistingLoadBalancerBackend(loadBalancer1, backendPoolName1)
                         .WithExistingLoadBalancerBackend(loadBalancer1, backendPoolName2)
                         .WithExistingLoadBalancerInboundNatRule(loadBalancer1, NatRule5000to22forVM1)
@@ -247,7 +247,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithNewResourceGroup(rgName)
                         .WithExistingPrimaryNetwork(network)
                         .WithSubnet("Front-end")
-                        .WithPrimaryPrivateIpAddressDynamic()
+                        .WithPrimaryPrivateIPAddressDynamic()
                         .WithExistingLoadBalancerBackend(loadBalancer1, backendPoolName1)
                         .WithExistingLoadBalancerBackend(loadBalancer1, backendPoolName2)
                         .WithExistingLoadBalancerInboundNatRule(loadBalancer1, NatRule5002to22forVM2)
@@ -349,7 +349,7 @@ namespace ManageInternetFacingLoadBalancer
                 // Create another public IP address
                 Utilities.Log("Creating another public IP address...");
 
-                var publicIpAddress2 = azure.PublicIpAddresses.Define(publicIpName2)
+                var publicIpAddress2 = azure.PublicIPAddresses.Define(publicIpName2)
                         .WithRegion(Region.USEast)
                         .WithExistingResourceGroup(rgName)
                         .WithLeafDomainLabel(publicIpName2)
@@ -357,7 +357,7 @@ namespace ManageInternetFacingLoadBalancer
 
                 Utilities.Log("Created another public IP address");
                 // Print the virtual network details
-                Utilities.PrintIpAddress(publicIpAddress2);
+                Utilities.PrintIPAddress(publicIpAddress2);
 
                 //=============================================================
                 // Create another Internet facing load balancer
@@ -388,7 +388,7 @@ namespace ManageInternetFacingLoadBalancer
                         .WithRegion(Region.USEast)
                         .WithExistingResourceGroup(rgName)
                         .DefinePublicFrontend(frontendName)
-                            .WithExistingPublicIpAddress(publicIpAddress2)
+                            .WithExistingPublicIPAddress(publicIpAddress2)
                             .Attach()
                         // Add two backend one per rule
                         .DefineBackend(backendPoolName1)
@@ -500,7 +500,7 @@ namespace ManageInternetFacingLoadBalancer
 
                 var azure = Azure
                     .Configure()
-                    .WithLogLevel(HttpLoggingDelegatingHandler.Level.BASIC)
+                    .WithLogLevel(HttpLoggingDelegatingHandler.Level.Basic)
                     .Authenticate(credentials)
                     .WithDefaultSubscription();
 
