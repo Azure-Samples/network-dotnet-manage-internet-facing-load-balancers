@@ -4,7 +4,7 @@ platforms: .Net
 author: selvasingh
 ---
 
-#Getting Started with Network - Manage Internet Facing Load Balancer - in .Net #
+# Getting Started with Network - Manage Internet Facing Load Balancer - in .Net #
 
           Azure Network sample for managing Internet facing load balancers -
           High-level ...
