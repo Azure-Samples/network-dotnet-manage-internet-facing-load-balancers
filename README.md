@@ -43,9 +43,9 @@ urlFragment: getting-started-on-managing-load-balancers-in-c
  - And associate network interfaces to backend pools and NAT rules
  Create two virtual machines in the frontend subnet ...
  - And assign network interfaces
- Update an existing load balancer, configure TCP idle timeout
- Create another load balancer
- Remove an existing load balancer
+ - Update an existing load balancer, configure TCP idle timeout
+ - Create another load balancer
+ - Remove an existing load balancer
 
 ## Running this sample
 
