@@ -3,24 +3,32 @@ page_type: sample
 languages:
 - csharp
 products:
+- dotnet
 - azure
+- azure-virtual-network
 extensions:
 - services: virtual-network
 - platforms: dotnet
 description: "Azure Network sample for managing Internet facing load balancers."
+urlFragment: getting-started-on-managing-load-balancers-in-c
 ---
 
-# Getting started on managing load balancers in C# #
+# Get started managing load balancers (C#)
 
- Azure Network sample for managing Internet facing load balancers -
- High-level ...
+ Azure Network sample for managing Internet facing load balancers.
+ 
+ ## High-level
+ 
  - Create an Internet facing load balancer that receives network traffic on
    port 80 and 443 and sends load-balanced traffic to two virtual machines
  - Create NAT rules for SSH and TELNET access to virtual
    machines behind the load balancer
  - Create health probes
- Details ...
- Create an Internet facing load balancer with ...
+ 
+ ## Details
+ 
+ Create an Internet facing load balancer with:
+ 
  - A frontend public IP address
  - Two backend address pools which contain network interfaces for the virtual
    machines to receive HTTP and HTTPS network traffic from the load balancer
@@ -39,27 +47,23 @@ description: "Azure Network sample for managing Internet facing load balancers."
  Create another load balancer
  Remove an existing load balancer
 
-
-## Running this Sample ##
+## Running this sample
 
 To run this sample:
 
 Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an auth file. See [how to create an auth file](https://github.com/Azure/azure-libraries-for-net/blob/master/AUTH.md).
 
-    git clone https://github.com/Azure-Samples/network-dotnet-manage-internet-facing-load-balancers.git
+```bash
+git clone https://github.com/Azure-Samples/network-dotnet-manage-internet-facing-load-balancers.git
+cd network-dotnet-manage-internet-facing-load-balancers
+dotnet build
+bin\Debug\net452\ManageInternetFacingLoadBalancer.exe
+```
 
-    cd network-dotnet-manage-internet-facing-load-balancers
-
-    dotnet build
-
-    bin\Debug\net452\ManageInternetFacingLoadBalancer.exe
-
-## More information ##
+## More information
 
 [Azure Management Libraries for C#](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)
 [Azure .Net Developer Center](https://azure.microsoft.com/en-us/develop/net/)
-If you don't have a Microsoft Azure subscription you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212)
-
----
+If you don't have a Microsoft Azure subscription you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
